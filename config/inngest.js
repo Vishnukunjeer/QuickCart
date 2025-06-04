@@ -1,6 +1,7 @@
 import { Inngest } from "inngest";
 import { connect } from "mongoose";
 import connectDB from "./db";
+import User from "@/models/user";
 
 export const inngest = new Inngest({
   id: "quickcart-next"
