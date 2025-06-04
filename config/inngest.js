@@ -1,5 +1,4 @@
 import { Inngest } from "inngest";
-import { connect } from "mongoose";
 import connectDB from "./db";
 import User from "@/models/user"
 
@@ -39,7 +38,7 @@ async({event})=>{
     imageUrl: image_url,
   };
   await connectDB();
-  await User.findByIdAndUpdate(id,userData)
+  await User.findOneAndUpdate(id,userData)
 })
 
 //Inngest Function to delete user data from the database
@@ -50,4 +49,4 @@ export const syncUserDeletion = inngest.createFunction({
 async({event})=>{
   const { id } = event.data;
   await connectDB();
-  await User.findByIdAndDelete(id)})
+  await User.findOneAndDelete(id)})
